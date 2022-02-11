@@ -2,9 +2,9 @@ const express=require('express');
 
 const print=console.log;
 
-const serverConfig={
+const defaultServerConfig={
     host:"localhost",
-    port:8080,
+    port:8888,
 };
 
 const app=express();
@@ -17,7 +17,10 @@ app.get('/',(req,res)=>{
 });
 
 function main(){
-    app.listen(serverConfig.port, ()=>print(`Server listening on port ${serverConfig.port}`));
+    //Acquiring port from env
+    const port = process.env.APP_PORT ?? defaultServerConfig.port;
+
+    app.listen(port, ()=>print(`Server listening on port ${port}`));
 }
 
 main();
