@@ -1,0 +1,23 @@
+{
+  "name": "atlt",
+  "version": "1.0.0",
+  "description": "athletes stuff",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XXXRef/aTlT.git"
+  },
+  "author": "XXXRef",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XXXRef/aTlT/issues"
+  },
+  "homepage": "https://github.com/XXXRef/aTlT#readme",
+  "dependencies": {
+    "express": "^4.17.2",
+    "sax": "^1.2.4"
+  }
+}
