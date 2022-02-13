@@ -1,3 +1,30 @@
+@font-face {
+    font-family: "Furore";
+    src: url("../fonts/Furore.otf") format("opentype");
+}
+
+*{
+    color: black;
+    font-family: "Furore";
+    font-size: 12pt;
+}
+
 body{
     background-color: orange;
+}
+div{
+    border: solid 1px black;
+}
+
+.table_form td{
+    /*text-align: right;*/
+    max-width:100%;
+}
+
+#div_contents{
+    margin: 0 auto;
+}
+
+#div_header{
+    height: 100px;
 }
