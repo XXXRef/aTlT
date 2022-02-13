@@ -9,11 +9,29 @@
     font-size: 12pt;
 }
 
-body{
-    background-color: orange;
+html{
+    padding: 0;
+    background-color: gray;
+    height: 100%;
+    width:100%;
+    min-height: 100%;
 }
+
+body{
+    width:100%;
+    min-height: 100vh;
+    margin: 0;
+    background-color: orange;
+
+
+}
+
 div{
     border: solid 1px black;
+}
+
+button{
+    width: 100%;
 }
 
 .table_form td{
@@ -21,10 +39,80 @@ div{
     max-width:100%;
 }
 
-#div_contents{
-    margin: 0 auto;
+#div_header{
+    background-color: lightgrey;
+    height: 259px;
+    background-position: center;
+    background-image: url("../images/milos_test.jpg");
+    background-repeat: no-repeat;
 }
 
-#div_header{
-    height: 100px;
+#div_contents{
+    background-color: darkseagreen;
+    margin: 0 auto;
+
+    display: flex;
+    /*align-items: center;*/
+}
+
+#div_contents_leftarea{
+    background-color: lightblue;
+    flex:1;
+    height: 500px;
+    margin-left:30px;
+    background-position: left;
+    background-image: url("../images/left.gif");
+    background-repeat: no-repeat;
+}
+
+#div_contents_mainarea{
+    flex:1;
+    background-color: greenyellow;
+    /*min-height: 100%;*/
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#div_contents_rightarea{
+    background-color: lightblue;
+    flex:1;
+    min-height: 200px;
+    background-position: right;
+    margin-right:30px;
+    background-image: url("../images/right.gif");
+    background-repeat: no-repeat;
+}
+
+#div_bottom_gap{
+    background-color: blueviolet;
+    height: 168px;
+    background-position: center;
+    background-image: url("../images/milos_test_bottom_gap.jpg");
+    background-repeat: no-repeat;
+}
+
+#div_contents_mainarea_resultmaxweight{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color:limegreen;
+    padding:20px;
+    text-align: center;
+}
+
+#form_calc_weight{
+    background-color: orange;
+}
+
+#table_form_calc_weight{
+    display: table;
+    width: 100%;
+}
+
+#button_calc_maxweight{
+    padding: 8px;
+}
+
+#table_form_calc_weight{
+    min-width: 100%;
 }
