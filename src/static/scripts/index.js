@@ -18,18 +18,29 @@ function calc_weight_click(){
 
     let flagResultsStuffAdded=document.getElementById("div_contents_mainarea_resultmaxweight") ? true: false;
 
+    //dynamic elements
     let divMaxWeight;
+    let divAdditionalInfo;
 
     if(!flagResultsStuffAdded) {
         let divMainArea=document.getElementById("div_contents_mainarea");
+        //divMaxWeight
         divMaxWeight=document.createElement("div");
         divMaxWeight.setAttribute("id", "div_contents_mainarea_resultmaxweight");
         divMainArea.appendChild(divMaxWeight);
+        //divAdditionalInfo
+        divAdditionalInfo=document.createElement("div");
+        divAdditionalInfo.setAttribute("id", "div_additional_info");
+        divMainArea.appendChild(divAdditionalInfo);
+
     }else{
         divMaxWeight=document.getElementById("div_contents_mainarea_resultmaxweight");
+        divAdditionalInfo=document.getElementById("div_additional_info");
     }
 
     divMaxWeight.innerHTML=`Max weight: <b>${maxWeightValue}</b> kg`;
+
+    divAdditionalInfo.innerHTML=`[div_additional_info]`;
 }
 
 function main(){

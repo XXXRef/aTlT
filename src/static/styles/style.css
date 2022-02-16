@@ -94,7 +94,6 @@ button{
 
 #div_contents_mainarea_resultmaxweight{
     margin-top: 20px;
-    margin-bottom: 20px;
     background-color:limegreen;
     padding:20px;
     text-align: center;
@@ -117,3 +116,6 @@ button{
     padding: 8px;
 }
 
+#div_additional_info{
+    background-color: lightgreen;
+}
