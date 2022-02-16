@@ -30,8 +30,6 @@ function calc_weight_click(){
     }
 
     divMaxWeight.innerHTML=`Max weight: <b>${maxWeightValue}</b> kg`;
-
-    print("DEBUG3");
 }
 
 function main(){
