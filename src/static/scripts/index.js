@@ -24,6 +24,7 @@ function calc_weight_click(){
     //dynamic elements
     let divMaxWeight;
     let divAdditionalInfo;
+    let divReward;
 
     if(!flagResultsStuffAdded) {
         let divMainArea=document.getElementById("div_contents_mainarea");
@@ -35,10 +36,14 @@ function calc_weight_click(){
         divAdditionalInfo=document.createElement("div");
         divAdditionalInfo.setAttribute("id", "div_additional_info");
         divMainArea.appendChild(divAdditionalInfo);
-
+        //divReward
+        divReward=document.createElement("div");
+        divReward.setAttribute("id", "div_reward");
+        divMainArea.appendChild(divReward);
     }else{
         divMaxWeight=document.getElementById("div_contents_mainarea_resultmaxweight");
         divAdditionalInfo=document.getElementById("div_additional_info");
+        divReward=document.getElementById("div_reward");
     }
 
     //render max weight block
@@ -49,6 +54,9 @@ function calc_weight_click(){
     weightPercents.forEach(weightPercent => {
         divAdditionalInfo.innerHTML += `<p>${weightPercent * 100}% : ${maxWeightValue * weightPercent} kg </p><hr>`;
     });
+
+    //render reward block
+    divReward.innerHTML="[div_reward]";
 }
 
 function main(){
