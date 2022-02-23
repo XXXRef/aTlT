@@ -93,6 +93,14 @@ button{
     background-repeat: no-repeat;
 }
 
+#div_logo {
+    margin-bottom: 10px;
+    background-color: #CCCCCC;
+    text-align: center;
+    font-size: 40pt;
+    font-style: italic;
+}
+
 #div_contents_mainarea_resultmaxweight{
     margin-top: 20px;
     background-color:limegreen;
