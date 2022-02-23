@@ -121,5 +121,24 @@ button{
 }
 
 #div_reward{
+    margin-top: 20px;
     background-color: blue;
+}
+
+#div_reward_rank {
+    padding: 15px;
+    text-align: center;
+}
+
+#div_reward_icon {
+    padding: 15px;
+}
+
+#div_reward_icon img{
+    margin: 0 auto;
+    display: block;
+}
+
+#div_reward_description {
+    padding: 10px;
 }
