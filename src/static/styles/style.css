@@ -30,6 +30,7 @@ div{
     border: solid 1px black;
 }
 
+
 button{
     width: 100%;
 }
@@ -105,6 +106,7 @@ button{
 }
 
 #div_logo {
+    border-width: 0px;
     margin-bottom: 10px;
     background-color: #CCCCCC;
     text-align: center;
