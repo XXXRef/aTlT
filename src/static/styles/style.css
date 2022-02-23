@@ -52,33 +52,44 @@ button{
     margin: 0 auto;
 
     display: flex;
-    /*align-items: center;*/
+    /* align-items: flex-start; */
+    /* align-items: center; */
+    align-items: stretch;
 }
 
 #div_contents_leftarea{
     background-color: lightblue;
     flex:1;
-    height: 500px;
+    min-height: 500px;
     margin-left:30px;
     background-position: left;
     background-image: url("../images/left.gif");
     background-repeat: no-repeat;
 }
 
-#div_contents_mainarea{
+#div_contents_centralarea {
     flex:1;
-    background-color: greenyellow;
     max-width: 1000px;
+    height: 100%;
+    min-height: 500px;
+    margin-left: 10px;
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#div_contents_mainarea{
+    background-color: greenyellow;
+    width: 100%;
     /*min-height: 100%;*/
     padding: 20px;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 0 auto;
+
 }
 
 #div_contents_rightarea{
-    background-color: lightblue;
     flex:1;
-    min-height: 200px;
+    background-color: lightblue;
     background-position: right;
     margin-right:30px;
     background-image: url("../images/right.gif");
