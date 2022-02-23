@@ -97,6 +97,7 @@ button{
     background-color:limegreen;
     padding:20px;
     text-align: center;
+    font-size: 32px;
 }
 
 #form_calc_weight{
@@ -114,6 +115,12 @@ button{
 
 #button_calc_maxweight{
     padding: 8px;
+}
+
+#span_maxweight_value{
+    font-size:40px;
+    color:brown;
+    font-style: bold;
 }
 
 #div_additional_info{

@@ -95,7 +95,7 @@ function calc_weight_click(){
     }
 
     //render max weight block
-    divMaxWeight.innerHTML=`Max weight: <b>${Math.round(maxWeightValue)}</b> kg`;
+    divMaxWeight.innerHTML=`Max weight: <span id="span_maxweight_value">${Math.round(maxWeightValue)}</span> kg`;
 
     //render additional info block
     divAdditionalInfo.innerHTML=`[div_additional_info]`;
