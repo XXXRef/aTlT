@@ -68,6 +68,7 @@ button{
 #div_contents_mainarea{
     flex:1;
     background-color: greenyellow;
+    max-width: 1000px;
     /*min-height: 100%;*/
     padding: 20px;
     margin-left: 20px;
