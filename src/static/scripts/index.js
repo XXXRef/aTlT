@@ -47,12 +47,12 @@ function calc_weight_click(){
     }
 
     //render max weight block
-    divMaxWeight.innerHTML=`Max weight: <b>${maxWeightValue}</b> kg`;
+    divMaxWeight.innerHTML=`Max weight: <b>${Math.round(maxWeightValue)}</b> kg`;
 
     //render additional info block
     divAdditionalInfo.innerHTML=`[div_additional_info]`;
     weightPercents.forEach(weightPercent => {
-        divAdditionalInfo.innerHTML += `<p>${weightPercent * 100}% : ${maxWeightValue * weightPercent} kg </p><hr>`;
+        divAdditionalInfo.innerHTML += `<p>${weightPercent * 100}% : ${Math.round(maxWeightValue * weightPercent)} kg </p><hr>`;
     });
 
     //render reward block
