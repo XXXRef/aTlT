@@ -26,6 +26,10 @@ const rewardsInfo = [
     },
 ];
 
+//state block
+const lineEdit_barbellWeight_orig_borderColor = document.getElementById("textarea_calc_maxweight_barbellweight").style["border-color"];
+const lineEdit_repsAmount_orig_borderColor = document.getElementById("textarea_calc_maxweight_repsamount").style["border-color"];
+
 function calcMaxWeight(weight, repsAmount) {
     //https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE_%D0%BF%D0%BE%D0%B2%D1%82%D0%BE%D1%80%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC_%D0%B2%D0%B5%D1%81%D0%BE%D0%BC
     return weight * (1+repsAmount/30);
@@ -66,10 +70,37 @@ function renderReward(hostDiv, rankID) {
 function calc_weight_click(){
     print("calc_weight_click invoked");
 
+    //Process input values
+    const lineEdit_barbellweight = document.getElementById("textarea_calc_maxweight_barbellweight");
+    const barbellWeightValue = +lineEdit_barbellweight.value;
+    let flagInvalidInput = false;
+    print(`barbellWeightValue=${barbellWeightValue}`);
+    if ((lineEdit_barbellweight.value==="") || isNaN(barbellWeightValue) || (barbellWeightValue < 0)) {
+        lineEdit_barbellweight.style["border-color"] = "red";
+        flagInvalidInput = true;
+    }else{
+        lineEdit_barbellweight.style["border-color"] = lineEdit_barbellWeight_orig_borderColor;
+    }
+
+    const lineEdit_repsAmount = document.getElementById("textarea_calc_maxweight_repsamount");
+    const repsAmountValue = +lineEdit_repsAmount.value;
+    print(`repsAmountValue=${repsAmountValue}`);
+    if ((lineEdit_repsAmount.value==="") || isNaN(repsAmountValue) || (repsAmountValue < 1)) {
+        lineEdit_repsAmount.style["border-color"] = "red";
+        flagInvalidInput = true;
+    }else{
+        lineEdit_repsAmount.style["border-color"] = lineEdit_repsAmount_orig_borderColor;
+    }
+
+    if (flagInvalidInput) {
+        document.getElementById("div_contents_mainarea_resultmaxweight")?.remove();
+        document.getElementById("div_additional_info")?.remove();
+        document.getElementById("div_reward")?.remove();
+        return;
+    }
+
     //Calculate max weight
-    const maxWeightValue=calcMaxWeight(
-        +document.getElementById("textarea_calc_maxweight_barbellweight").value,
-        +document.getElementById("textarea_calc_maxweight_repsamount").value);
+    const maxWeightValue=calcMaxWeight(barbellWeightValue, repsAmountValue);
     print(`Calculated maxWeightValue=${maxWeightValue}`);
 
     let flagResultsStuffAdded=document.getElementById("div_contents_mainarea_resultmaxweight") ? true: false;
