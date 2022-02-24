@@ -80,7 +80,7 @@ button{
     flex:1;
     min-height: 500px;
     margin-left:30px;
-    background-position: left;
+    background-position: center;
     background-image: url("../images/left.gif");
     background-repeat: no-repeat;
 }
@@ -109,7 +109,7 @@ button{
 #div_contents_rightarea{
     flex:1;
     /* background-color: lightblue; */
-    background-position: right;
+    background-position: center;
     margin-right:30px;
     background-image: url("../images/right.gif");
     background-repeat: no-repeat;
