@@ -183,10 +183,11 @@ button{
 
 #table_form_calc_weight input{
     width: 100%;
+    text-align: center;
 }
 
 #button_calc_maxweight{
-    padding: 8px;
+    padding: 15px;
 }
 
 #span_maxweight_value{
@@ -197,6 +198,15 @@ button{
 
 #div_additional_info{
     background-color: lightgreen;
+    padding: 10px;
+}
+
+.div_additional_info_weightpercents_item{
+    /* border: solid 1px black; */
+    /* padding-left: 50px; */
+    
+    text-align: center;
+    padding: 5px;
 }
 
 #div_reward{

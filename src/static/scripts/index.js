@@ -101,7 +101,7 @@ function calc_weight_click(){
     //divAdditionalInfo.innerHTML=`[div_additional_info]`;
     divAdditionalInfo.innerHTML="";
     weightPercents.forEach(weightPercent => {
-        divAdditionalInfo.innerHTML += `<p>${weightPercent * 100}% : ${Math.round(maxWeightValue * weightPercent)} kg </p><hr>`;
+        divAdditionalInfo.innerHTML += `<div class="div_additional_info_weightpercents_item"><p>${weightPercent * 100}% : ${Math.round(maxWeightValue * weightPercent)} kg </p></div>`;
     });
 
     //Process reward block
