@@ -7,22 +7,22 @@ const weightPercents = [0.5, 0.6, 0.7, 0.8, 0.9];
 
 const rewardsInfo = [
     {
-        weightBorder:   60,
-        rank:           "Novice",
-        icon:            "../images/reward_icons/reward_novice.png",
-        description:    "U r novice!"
-    },
-    {
-        weightBorder:   70,
-        rank:           "Middle",
-        icon:            "../images/reward_icons/reward_middle.png",
-        description:    "U r middle!"
-    },
-    {
         weightBorder:   80,
-        rank:           "Senior",
-        icon:            "../images/reward_icons/reward_senior.png",
-        description:    "U r senior!"
+        rank:           "Pussy",
+        icon:            "../images/reward_icons/reward_novice.jpg",
+        description:    "All you can? You are that type of person who asks his grangma to open toilet lid cos its too heavy when he goes to take a dump, decreasing his microscopic weight even more. Go eat and train fcking moron, albeit you're shit now, I believe in you."
+    },
+    {
+        weightBorder:   120,
+        rank:           "Halfman",
+        icon:            "../images/reward_icons/reward_middle.jpg",
+        description:    "Things are not so bad, still you can do way better. Go to gym and make me 20 squat reps with weight with which you usually do 10. Right now"
+    },
+    {
+        weightBorder:   130,
+        rank:           "Schwarz",
+        icon:            "../images/reward_icons/reward_senior.gif",
+        description:    "You are perfection, my dear! Just try to keep being so beatiful and strong as long as you can to make this world a little nicer. Kissing you in all allowed (and mb not only) places <3"
     },
 ];
 
