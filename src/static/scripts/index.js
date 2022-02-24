@@ -9,19 +9,19 @@ const rewardsInfo = [
     {
         weightBorder:   60,
         rank:           "Novice",
-        icon:            "../images/reward_novice.png",
+        icon:            "../images/reward_icons/reward_novice.png",
         description:    "U r novice!"
     },
     {
         weightBorder:   70,
         rank:           "Middle",
-        icon:            "../images/reward_middle.png",
+        icon:            "../images/reward_icons/reward_middle.png",
         description:    "U r middle!"
     },
     {
         weightBorder:   80,
         rank:           "Senior",
-        icon:            "../images/reward_senior.png",
+        icon:            "../images/reward_icons/reward_senior.png",
         description:    "U r senior!"
     },
 ];
@@ -98,7 +98,8 @@ function calc_weight_click(){
     divMaxWeight.innerHTML=`Max weight: <span id="span_maxweight_value">${Math.round(maxWeightValue)}</span> kg`;
 
     //render additional info block
-    divAdditionalInfo.innerHTML=`[div_additional_info]`;
+    //divAdditionalInfo.innerHTML=`[div_additional_info]`;
+    divAdditionalInfo.innerHTML="";
     weightPercents.forEach(weightPercent => {
         divAdditionalInfo.innerHTML += `<p>${weightPercent * 100}% : ${Math.round(maxWeightValue * weightPercent)} kg </p><hr>`;
     });

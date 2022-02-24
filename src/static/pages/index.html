@@ -8,47 +8,59 @@
     </head>
 
     <body>
-        <div id="div_header">
-            [div_header]
-        </div>
-
-        <div id="div_contents">
-            <div id="div_contents_leftarea">
-                [div_contents_leftarea]
-            </div>
-            <div id="div_contents_centralarea">
-                <div id="div_contents_mainarea">
-                    <div id="div_logo">
-                        atlt
+        <div id="div_mainarea">
+            <div id="div_mainblock">
+                <div id="div_header">
+                    <!-- [div_header] -->
+                </div>
+            
+                <div id="div_main">
+                    <div id="div_contents">
+                        <div id="div_contents_leftarea">
+                            <!-- [div_contents_leftarea] -->
+                        </div>
+                        <div id="div_contents_centralarea">
+                            <div id="div_contents_mainarea">
+                                <div id="div_logo">
+                                    atlt
+                                </div>
+                                <!--form id="form_calc_weight"-->
+                                <table id="table_form_calc_weight">
+                                    <tr>
+                                        <td><b>Barbell weight</b> (kg):</td>
+                                        <td><input type="text" id="textarea_calc_maxweight_barbellweight"></td>
+                                    </tr>
+                                    <tr>
+                                        <td><b>Rep amount:</b></td>
+                                        <td><input type="text" id="textarea_calc_maxweight_repsamount"></td>
+                                    </tr>
+                                    <!--tr>
+                                        <td></td><td><input type="button" value="Send" onclick="calc_weight_click()"></td>
+                                    </tr-->
+                                </table>
+                                <button id="button_calc_maxweight" onclick="calc_weight_click()">Calculate</button>
+                                <!--</form>-->                
+                            </div>
+                        </div>
+                        <div id="div_contents_rightarea">
+                            <!-- [div_contents_rightarea] -->
+                        </div>
                     </div>
-                    <!--form id="form_calc_weight"-->
-                    <table id="table_form_calc_weight">
-                        <tr>
-                            <td><b>Barbell weight</b> (kg):</td>
-                            <td><input type="text" id="textarea_calc_maxweight_barbellweight"></td>
-                        </tr>
-                        <tr>
-                            <td><b>Rep amount:</b></td>
-                            <td><input type="text" id="textarea_calc_maxweight_repsamount"></td>
-                        </tr>
-                        <!--tr>
-                            <td></td><td><input type="button" value="Send" onclick="calc_weight_click()"></td>
-                        </tr-->
-                    </table>
-                    <button id="button_calc_maxweight" onclick="calc_weight_click()">Calculate</button>
-                    <!--</form>-->                
+
+                    <div id="div_bottom_gap">
+                        <!-- [div_bottom_gap] -->
+                    </div>
                 </div>
             </div>
-            <div id="div_contents_rightarea">
-                [div_contents_rightarea]
+        </div>
+        <div id="div_footer">
+            <div id="div_footer_leftpart">
+                atlt v0.8
             </div>
+            <div id="div_footer_rightpart">
+            <span><a href="https://oiledowl.com">OiledOwl corp.</a> , 2022</span>
         </div>
-
-        <div id="div_bottom_gap">
-            [div_bottom_gap]
-        </div>
-
-
+        
         <script type="text/javascript" src="../scripts/index.js"></script>
     </body>
 </html>
