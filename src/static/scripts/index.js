@@ -42,11 +42,13 @@ function renderReward(hostDiv, rankID) {
         divRewardRank=document.createElement("div");
         divRewardRank.setAttribute("id", "div_reward_rank");
         divReward.appendChild(divRewardRank);
+        divReward.appendChild(document.createElement("hr"));
         //icon
         divRewardIcon=document.createElement("div");
         divRewardIcon.setAttribute("id", "div_reward_icon");
         divReward.appendChild(divRewardIcon);
         //description
+        divReward.appendChild(document.createElement("hr"));
         divRewardDescription=document.createElement("div");
         divRewardDescription.setAttribute("id", "div_reward_description");
         divReward.appendChild(divRewardDescription);

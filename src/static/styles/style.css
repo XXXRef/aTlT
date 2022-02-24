@@ -214,6 +214,10 @@ button{
     background-color: orange;
 }
 
+#div_reward hr {
+    margin: 0 100px;
+}
+
 #div_reward_rank {
     padding: 15px;
     text-align: center;
