@@ -32,6 +32,7 @@ const lineEdit_repsAmount_orig_borderColor = document.getElementById("textarea_c
 
 function calcMaxWeight(weight, repsAmount) {
     //https://ru.wikipedia.org/wiki/%D0%9E%D0%B4%D0%BD%D0%BE_%D0%BF%D0%BE%D0%B2%D1%82%D0%BE%D1%80%D0%B5%D0%BD%D0%B8%D0%B5_%D1%81_%D0%BC%D0%B0%D0%BA%D1%81%D0%B8%D0%BC%D0%B0%D0%BB%D1%8C%D0%BD%D1%8B%D0%BC_%D0%B2%D0%B5%D1%81%D0%BE%D0%BC
+    if (1===repsAmount) return weight;
     return weight * (1+repsAmount/30);
 }
 
