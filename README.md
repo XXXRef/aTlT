@@ -1,6 +1,6 @@
 <p align="center"> <h1 align="center">ATLT</h1> </p>
 
-<p align="center"> <img align="center" src="https://oiledowl.com/images/milos_eyes.png"> </p>
+<p align="center"> <img align="center" src="https://atlt.oiledowl.com/images/milos_eyes.png"> </p>
 
 <br>
 <br>
