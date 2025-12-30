@@ -9,7 +9,7 @@
     Max weight calculator with ranks and superdesign! <br>
 </p>
 <p align="center">
-    <a href="https://oiledowl.com/atlt">https://oiledowl.com/atlt</a>
+    <a href="https://atlt.oiledowl.com/">https://atlt.oiledowl.com</a>
 </p>
 
 <br>
