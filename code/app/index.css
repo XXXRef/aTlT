@@ -1,6 +1,6 @@
 @font-face {
     font-family: "Furore";
-    src: url("../fonts/Furore.otf") format("opentype");
+    src: url("/assets/fonts/Furore.otf") format("opentype");
 }
 
 *{
@@ -46,6 +46,7 @@ button{
 #div_mainarea{
     flex: 1 0 auto;
     display:flex;
+    flex-direction: column;
     align-items: center;
 }
 
@@ -60,7 +61,7 @@ button{
     margin-bottom: 30px;
     border: solid 1px black;
     background-position: center;
-    background-image: url("../images/milos_eyes.png");
+    background-image: url("/assets/images/milos_eyes.png");
     background-repeat: no-repeat;
 
 }
@@ -81,7 +82,7 @@ button{
     min-height: 500px;
     margin-left:30px;
     background-position: center;
-    background-image: url("../images/left.gif");
+    background-image: url("/assets/images/left.gif");
     background-repeat: no-repeat;
 }
 
@@ -111,7 +112,7 @@ button{
     /* background-color: lightblue; */
     background-position: center;
     margin-right:30px;
-    background-image: url("../images/right.gif");
+    background-image: url("/assets/images/right.gif");
     background-repeat: no-repeat;
 }
 
@@ -122,7 +123,7 @@ button{
     margin-top: 30px;
     margin-bottom: 30px; 
     background-position: center;
-    background-image: url("../images/milos_jaw.png");
+    background-image: url("/assets/images/milos_jaw.png");
     background-repeat: no-repeat;
 }
 
@@ -139,7 +140,9 @@ button{
 /* footer +*/
 #div_footer{
     display: flex;
+    width: 100%;
     align-items: stretch;
+
 }
 
 #div_footer_leftpart{
