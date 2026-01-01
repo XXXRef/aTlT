@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 //import './../index.css'
 import './App.css'
+import Footer from './Components/Footer'
+import InputForm from './Components/InputForm'
 
 const weightPercents = [0.5, 0.6, 0.7, 0.8, 0.9]
 
@@ -63,19 +65,13 @@ export default function App() {
             <div id="div_contents_centralarea">
               <div id="div_contents_mainarea">
                 <div id="div_logo">atlt</div>
-                <table id="table_form_calc_weight">
-                  <tbody>
-                    <tr>
-                      <td><b>Barbell weight</b> (kg):</td>
-                      <td><input value={barbellWeight} onChange={e => setBarbellWeight(e.target.value)} /></td>
-                    </tr>
-                    <tr>
-                      <td><b>Rep amount:</b></td>
-                      <td><input value={repsAmount} onChange={e => setRepsAmount(e.target.value)} /></td>
-                    </tr>
-                  </tbody>
-                </table>
-                <button id="button_calc_maxweight" onClick={onCalculate}>Calculate</button>
+                <InputForm
+                  barbellWeight={barbellWeight}
+                  setBarbellWeight={setBarbellWeight}
+                  repsAmount={repsAmount}
+                  setRepsAmount={setRepsAmount}
+                  onCalculate={onCalculate}
+                />
 
                 {result != null && (
                   <div>
@@ -95,10 +91,7 @@ export default function App() {
           <div id="div_bottom_gap" />
         </div>
       </div>
-      <div id="div_footer">
-        <div id="div_footer_leftpart">atlt v1.1</div>
-        <div id="div_footer_rightpart"><span><a href="https://oiledowl.com">OiledOwl corp.</a> , 2022</span></div>
-      </div>
+      <Footer />
     </div>
   )
 }
