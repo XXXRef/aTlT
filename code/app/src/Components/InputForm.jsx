@@ -1,17 +1,34 @@
 import React from 'react'
 
+
+const checkInputValue = (val) => {
+    const valTrimmed = String(val ?? '').trim()
+    if (valTrimmed === '') {
+        return true
+    }
+    const valNum = Number(valTrimmed)
+    return !Number.isNaN(valNum) && valNum >= 1
+};
+
+
+const setErrorVisualizationStyle = (i_bValidVal) => i_bValidVal ?
+  undefined
+  : { borderColor: 'red', borderWidth: '1px', borderStyle: 'solid' };
+
+
 export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount, setRepsAmount, onCalculate }) {
-  const isInvalidValue = (val) => {
-    const s = String(val ?? '').trim()
-    if (s === '') return true
-    if (!/^\d+(?:\.\d+)?$/.test(s)) return true
-    return parseFloat(s) < 1
-  }
+  const barbellWeightNorm = barbellWeight ?? ''
+  const repsAmountNorm = repsAmount ?? ''
 
-  const barbellInvalid = isInvalidValue(barbellWeight)
-  const repsInvalid = isInvalidValue(repsAmount)
+  const bBarbellWeightCorrect = checkInputValue(barbellWeightNorm)
+  const bRepsAmountCorrect = checkInputValue(repsAmountNorm)
 
-  const inputStyle = (invalid) => invalid ? { borderColor: 'red' } : {}
+  const checkSubmitEnabled = () => {
+    return barbellWeightNorm.trim() !== ''
+    && repsAmountNorm.trim() !== ''
+    && bBarbellWeightCorrect
+     && bRepsAmountCorrect
+  };
 
   return (
     <>
@@ -21,10 +38,9 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
             <td><b>Barbell weight</b> (kg):</td>
             <td>
               <input
-                value={barbellWeight}
+                value={barbellWeightNorm}
                 onChange={e => setBarbellWeight(e.target.value)}
-                style={inputStyle(barbellInvalid)}
-                aria-invalid={barbellInvalid}
+                style={setErrorVisualizationStyle(bBarbellWeightCorrect)}
               />
             </td>
           </tr>
@@ -32,16 +48,20 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
             <td><b>Rep amount:</b></td>
             <td>
               <input
-                value={repsAmount}
+                value={repsAmountNorm}
                 onChange={e => setRepsAmount(e.target.value)}
-                style={inputStyle(repsInvalid)}
-                aria-invalid={repsInvalid}
+                style={setErrorVisualizationStyle(bRepsAmountCorrect)}
               />
             </td>
           </tr>
         </tbody>
       </table>
-      <button id="button_calc_maxweight" onClick={onCalculate}>Calculate</button>
+      <button
+        id="button_calc_maxweight"
+        type="button"
+        onClick={() => { if (checkInputValue(barbellWeightNorm) && checkInputValue(repsAmountNorm) && typeof onCalculate === 'function') onCalculate() }}
+        disabled={!checkSubmitEnabled()}
+      >Calculate</button>
     </>
   )
 }

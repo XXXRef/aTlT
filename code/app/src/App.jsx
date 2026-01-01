@@ -40,11 +40,7 @@ export default function App() {
   function onCalculate() {
     const w = Number(barbellWeight)
     const r = Number(repsAmount)
-    if (!barbellWeight || isNaN(w) || w < 0 || !repsAmount || isNaN(r) || r < 1) {
-      setResult(null)
-      setRankID(null)
-      return
-    }
+    
     const maxWeightValue = calcMaxWeight(w, r)
     setResult(Math.round(maxWeightValue))
     let found
