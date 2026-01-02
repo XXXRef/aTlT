@@ -1,4 +1,5 @@
 import settings from '../../settings.json'
+import '../../styles.css'
 
 
 const { rewardsInfo } = settings
