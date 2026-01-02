@@ -1,11 +1,11 @@
 import React, { useState } from 'react'
 
-import Footer from './Components/Footer'
-import InputForm from './Components/InputForm'
+import Footer from './Footer'
+import InputForm from './InputForm'
 
 import './App.css'
 
-import settings from '../settings.json'
+import settings from '../../settings.json'
 
 
 const { weightPercents, rewardsInfo } = settings
