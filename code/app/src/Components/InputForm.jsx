@@ -9,7 +9,7 @@ const checkInputValue = (val) => {
   return !Number.isNaN(valNum) && valNum >= 1
 }
 
-export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount, setRepsAmount, onCalculate }) {
+export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount, setRepsAmount, onCalculate, unit, setUnit }) {
   const barbellWeightNorm = barbellWeight ?? ''
   const repsAmountNorm = repsAmount ?? ''
 
@@ -33,18 +33,31 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
 
   return (
     <form onSubmit={handleSubmit}>
-      <div className="row g-2 align-items-center">
+      <div className="row g-2 align-items-center mb-2">
         <div className="col-md-4">
-          <label className="col-form-label"><b>Barbell weight</b> (kg):</label>
+          <label className="col-form-label"><b>Barbell weight</b>:</label>
         </div>
         <div className="col-md-8">
-          <input
-            type="text"
-            className={"form-control text-center rounded-0" + (showBarbellInvalid ? ' is-invalid' : '')}
-            value={barbellWeightNorm}
-            onChange={e => setBarbellWeight(e.target.value)}
-            aria-invalid={showBarbellInvalid}
-          />
+          <div className="d-flex align-items-center">
+            <input
+              type="text"
+              className={"form-control text-center rounded-0" + (showBarbellInvalid ? ' is-invalid' : '')}
+              value={barbellWeightNorm}
+              onChange={e => setBarbellWeight(e.target.value)}
+              aria-invalid={showBarbellInvalid}
+            />
+
+            <select
+              id="select_unit"
+              className="form-select rounded-0 ms-2"
+              value={unit}
+              onChange={e => setUnit(e.target.value)}
+              style={{ width: 85 }}
+            >
+              <option value="KG">KG</option>
+              <option value="LBS">LBS</option>
+            </select>
+          </div>
         </div>
       </div>
 

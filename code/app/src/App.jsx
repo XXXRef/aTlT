@@ -10,9 +10,10 @@ import settings from '../settings.json'
 
 const { weightPercents, rewardsInfo } = settings
 
-function calcMaxWeight(weight, repsAmount) {
-  if (repsAmount === 1) return weight
-  return weight * (1 + repsAmount / 30)
+function calcMaxWeight(weightKg, repsAmount) {
+  // weightKg expected in kilograms; returns estimated 1RM in kilograms
+  if (repsAmount === 1) return weightKg
+  return weightKg * (1 + repsAmount / 30)
 }
 
 function Reward({ rankID }) {
@@ -34,16 +35,21 @@ export default function App() {
   const [repsAmount, setRepsAmount] = useState('')
   const [result, setResult] = useState(null)
   const [rankID, setRankID] = useState(null)
+  const [unit, setUnit] = useState('KG')
 
   function onCalculate() {
     const w = Number(barbellWeight)
     const r = Number(repsAmount)
-    
-    const maxWeightValue = calcMaxWeight(w, r)
-    setResult(Math.round(maxWeightValue))
+    // Convert input to kilograms for internal calculations if needed
+    const inputKg = unit === 'KG' ? w : (w * 0.45359237)
+
+    const maxWeightKg = calcMaxWeight(inputKg, r)
+    // result displayed in chosen unit
+    const displayedResult = unit === 'KG' ? Math.round(maxWeightKg) : Math.round(maxWeightKg / 0.45359237)
+    setResult(displayedResult)
     let found
     for (let i = 0; i < rewardsInfo.length; ++i) {
-      if (maxWeightValue <= rewardsInfo[i].weightBorder) { found = i; break }
+      if (maxWeightKg <= rewardsInfo[i].weightBorder) { found = i; break }
     }
     if (found === undefined) found = rewardsInfo.length - 1
     setRankID(found)
@@ -65,14 +71,16 @@ export default function App() {
                   repsAmount={repsAmount}
                   setRepsAmount={setRepsAmount}
                   onCalculate={onCalculate}
+                  unit={unit}
+                  setUnit={setUnit}
                 />
 
                 {result != null && (
                   <div>
-                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <span id="span_maxweight_value">{result}</span> kg</div>
+                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <span id="span_maxweight_value">{result}</span> {unit}</div>
                     <div id="div_additional_info">
                       {weightPercents.map(p => (
-                        <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} kg</p></div>
+                        <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} {unit}</p></div>
                       ))}
                     </div>
                     <Reward rankID={rankID} />
