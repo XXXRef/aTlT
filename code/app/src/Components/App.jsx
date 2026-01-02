@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect, useCallback } from 'react'
 
 import Footer from './Footer'
 import InputForm from './InputForm'
@@ -37,12 +37,11 @@ export default function App() {
   const [rankID, setRankID] = useState(null)
   const [unit, setUnit] = useState('KG')
 
-  function onCalculate() {
+  const calculate = useCallback(() => {
     const w = Number(barbellWeight)
     const r = Number(repsAmount)
     // Convert input to kilograms for internal calculations if needed
     const inputKg = unit === 'KG' ? w : (w * 0.45359237)
-
     const maxWeightKg = calcMaxWeight(inputKg, r)
     // result displayed in chosen unit
     const displayedResult = unit === 'KG' ? Math.round(maxWeightKg) : Math.round(maxWeightKg / 0.45359237)
@@ -53,7 +52,17 @@ export default function App() {
     }
     if (found === undefined) found = rewardsInfo.length - 1
     setRankID(found)
+  }, [barbellWeight, repsAmount, unit])
+
+  function onCalculate() {
+    calculate()
   }
+
+  useEffect(() => {
+    if (result != null) {
+      calculate()
+    }
+  }, [unit, result, calculate])
 
   return (
     <div id="div_mainarea">
