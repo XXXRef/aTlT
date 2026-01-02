@@ -88,6 +88,7 @@ button{
 
 #div_contents_centralarea {
     flex:1;
+    min-width: 400px;
     max-width: 1000px;
     height: 100%;
     min-height: 500px;
@@ -172,7 +173,7 @@ button{
     background-color:limegreen;
     padding:20px;
     text-align: center;
-    font-size: 30pt;
+    font-size: 20pt;
 }
 
 #form_calc_weight{

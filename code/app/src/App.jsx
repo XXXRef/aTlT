@@ -77,7 +77,7 @@ export default function App() {
 
                 {result != null && (
                   <div>
-                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <span id="span_maxweight_value">{result}</span> {unit}</div>
+                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <p /> <span id="span_maxweight_value">{result}</span> {unit}</div>
                     <div id="div_additional_info">
                       {weightPercents.map(p => (
                         <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} {unit}</p></div>
