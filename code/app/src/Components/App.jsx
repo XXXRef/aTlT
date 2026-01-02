@@ -2,33 +2,23 @@ import React, { useState } from 'react'
 
 import Footer from './Footer'
 import InputForm from './InputForm'
+import ResultDisplay from './ResultDisplay'
+import Reward from './Reward'
 
 import './App.css'
 
 import settings from '../../settings.json'
 
 
-const { weightPercents, rewardsInfo } = settings
+const { rewardsInfo } = settings
 
-function calcMaxWeight(weightKg, repsAmount) {
-  // weightKg expected in kilograms; returns estimated 1RM in kilograms
-  if (repsAmount === 1) return weightKg
-  return weightKg * (1 + repsAmount / 30)
-}
 
-function Reward({ rankID }) {
-  if (rankID == null) return null
-  const r = rewardsInfo[rankID]
-  return (
-    <div id="div_reward">
-      <div id="div_reward_rank">Rank: <b>{r.rank}</b></div>
-      <hr />
-      <div id="div_reward_icon"><img src={r.icon} alt={r.rank} /></div>
-      <hr />
-      <div id="div_reward_description">{r.description}</div>
-    </div>
-  )
-}
+const calcMaxWeight = (weightKg, repsAmount) =>
+  repsAmount === 1 ? weightKg : weightKg * (1 + repsAmount / 30)
+
+
+
+
 
 export default function App() {
   const [barbellWeight, setBarbellWeight] = useState('')
@@ -79,12 +69,10 @@ export default function App() {
 
                 {result != null && (
                   <div>
-                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <p /> <span id="span_maxweight_value">{result}</span> {unitShown}</div>
-                    <div id="div_additional_info">
-                      {weightPercents.map(p => (
-                        <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} {unitShown}</p></div>
-                      ))}
-                    </div>
+                    <ResultDisplay
+                      result={result}
+                      unitShown={unitShown}
+                    />
                     <Reward rankID={rankID} />
                   </div>
                 )}
