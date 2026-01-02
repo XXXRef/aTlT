@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
 import Footer from './Footer'
 import InputForm from './InputForm'
@@ -36,16 +36,18 @@ export default function App() {
   const [result, setResult] = useState(null)
   const [rankID, setRankID] = useState(null)
   const [unit, setUnit] = useState('KG')
+  const [unitShown, setUnitShown] = useState('KG')
 
-  function calculate(weightArg, repsArg, unitArg) {
+  const onCalculate = (weightArg, repsArg, unitArg) => {
     const w = Number(weightArg !== undefined ? weightArg : barbellWeight)
     const r = Number(repsArg !== undefined ? repsArg : repsAmount)
-    const u = unitArg !== undefined ? unitArg : unit
+    const units = unitArg !== undefined ? unitArg : unit
+    setUnitShown(units)
     // Convert input to kilograms for internal calculations if needed
-    const inputKg = u === 'KG' ? w : (w * 0.45359237)
+    const inputKg = units === 'KG' ? w : (w * 0.45359237)
     const maxWeightKg = calcMaxWeight(inputKg, r)
     // result displayed in chosen unit
-    const displayedResult = u === 'KG' ? Math.round(maxWeightKg) : Math.round(maxWeightKg / 0.45359237)
+    const displayedResult = units === 'KG' ? Math.round(maxWeightKg) : Math.round(maxWeightKg / 0.45359237)
     setResult(displayedResult)
     let found
     for (let i = 0; i < rewardsInfo.length; ++i) {
@@ -54,16 +56,6 @@ export default function App() {
     if (found === undefined) found = rewardsInfo.length - 1
     setRankID(found)
   }
-
-  function onCalculate() {
-    calculate()
-  }
-
-  useEffect(() => {
-    if (result != null) {
-      calculate()
-    }
-  }, [unit])
 
   return (
     <div id="div_mainarea">
@@ -87,10 +79,10 @@ export default function App() {
 
                 {result != null && (
                   <div>
-                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <p /> <span id="span_maxweight_value">{result}</span> {unit}</div>
+                    <div id="div_contents_mainarea_resultmaxweight">Max weight: <p /> <span id="span_maxweight_value">{result}</span> {unitShown}</div>
                     <div id="div_additional_info">
                       {weightPercents.map(p => (
-                        <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} {unit}</p></div>
+                        <div key={p} className="div_additional_info_weightpercents_item"><p>{p * 100}% : {Math.round(result * p)} {unitShown}</p></div>
                       ))}
                     </div>
                     <Reward rankID={rankID} />
