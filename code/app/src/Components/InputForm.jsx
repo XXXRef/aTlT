@@ -1,5 +1,9 @@
 import React from 'react'
 
+
+const CONTROL_WIDTH = 85
+
+
 const checkInputValue = (val) => {
   const valTrimmed = String(val ?? '').trim()
   if (valTrimmed === '') {
@@ -9,7 +13,8 @@ const checkInputValue = (val) => {
   return !Number.isNaN(valNum) && valNum >= 1
 }
 
-export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount, setRepsAmount, onCalculate, unit, setUnit }) {
+
+export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount, setRepsAmount, onCalculate, unit, setUnit, setShowSettings }) {
   const barbellWeightNorm = barbellWeight ?? ''
   const repsAmountNorm = repsAmount ?? ''
 
@@ -33,6 +38,7 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
 
   return (
     <form onSubmit={handleSubmit}>
+      {/* row 'Barbell weight'*/}
       <div className="row g-2 align-items-center mb-2">
         <div className="col-md-4">
           <label className="col-form-label"><b>Barbell weight</b>:</label>
@@ -42,6 +48,7 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
             <input
               type="text"
               className={"form-control text-center rounded-0" + (showBarbellInvalid ? ' is-invalid' : '')}
+              style={{ flex: '1 1 auto' }}
               value={barbellWeightNorm}
               onChange={e => setBarbellWeight(e.target.value)}
               aria-invalid={showBarbellInvalid}
@@ -50,9 +57,9 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
             <select
               id="select_unit"
               className="form-select rounded-0 ms-2"
+              style={{ width: `${CONTROL_WIDTH}px`, flex: `0 0 ${CONTROL_WIDTH}px` }}
               value={unit}
               onChange={e => setUnit(e.target.value)}
-              style={{ width: 85 }}
             >
               <option value="KG">KG</option>
               <option value="LBS">LBS</option>
@@ -61,21 +68,42 @@ export default function InputForm({ barbellWeight, setBarbellWeight, repsAmount,
         </div>
       </div>
 
+      {/* row 'Rep amount'*/}
       <div className="row g-2 align-items-center mt-2">
         <div className="col-md-4">
           <label className="col-form-label"><b>Rep amount:</b></label>
         </div>
+        
         <div className="col-md-8">
-          <input
-            type="text"
-            className={"form-control text-center rounded-0" + (showRepsInvalid ? ' is-invalid' : '')}
-            value={repsAmountNorm}
-            onChange={e => setRepsAmount(e.target.value)}
-            aria-invalid={showRepsInvalid}
-          />
+          <div className="d-flex align-items-center">
+            <input
+              type="text"
+              className={"form-control text-center rounded-0" + (showRepsInvalid ? ' is-invalid' : '')}
+              style={{ flex: '1 1 auto' }}
+              value={repsAmountNorm}
+              onChange={e => setRepsAmount(e.target.value)}
+              aria-invalid={showRepsInvalid}
+            />
+
+            <div
+              id="div_container_settings"
+              className="ms-2 d-flex align-items-center justify-content-center"
+              style={{ width: `${CONTROL_WIDTH}px`, flex: `0 0 ${CONTROL_WIDTH}px` }}
+            >
+              <img
+                id="btn_settings"
+                src="/assets/images/button_settings.png"
+                alt="Settings"
+                onClick={() => setShowSettings(true)}
+                style={{ display: 'block', maxWidth: '60%' }}
+              />
+            </div>
+          </div>
         </div>
+        
       </div>
 
+      {/* row Button*/}
       <div className="mt-3">
         <button
           id="button_calc_maxweight"

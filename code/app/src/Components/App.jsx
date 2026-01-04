@@ -1,21 +1,19 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 
 import Footer from './Footer'
 import InputForm from './InputForm'
 import ResultDisplay from './ResultDisplay'
 import Reward from './Reward'
+import SettingsModal from './SettingsModal'
 
 import './App.css'
 
 import settings from '../../settings.json'
 
-
-const { rewardsInfo } = settings
-
-
 import { stubCalcMaxWeight, convertKgToLbs, convertLbsToKg } from "../utilsCalc"
 
 
+const { rewardsInfo } = settings
 
 
 export default function App() {
@@ -25,6 +23,13 @@ export default function App() {
   const [rankID, setRankID] = useState(null)
   const [unit, setUnit] = useState('KG')
   const [unitShown, setUnitShown] = useState('KG')
+  const [showSettings, setShowSettings] = useState(false)
+  const [calcMethod, setCalcMethod] = useState('method 1')
+
+  const onSetCalcMethod = (i_method) => {
+    setCalcMethod(i_method)
+    console.log("onSetCalcMethod:", `+; calc method=${i_method}`)
+  }
 
   const onCalculate = (weightArg, repsArg, unitArg) => {
     const w = Number(weightArg !== undefined ? weightArg : barbellWeight)
@@ -55,6 +60,7 @@ export default function App() {
             <div id="div_contents_centralarea">
               <div id="div_contents_mainarea">
                 <div id="div_logo">atlt</div>
+                
                 <InputForm
                   barbellWeight={barbellWeight}
                   setBarbellWeight={setBarbellWeight}
@@ -63,7 +69,12 @@ export default function App() {
                   onCalculate={onCalculate}
                   unit={unit}
                   setUnit={setUnit}
+                  setShowSettings={setShowSettings}
                 />
+
+                {/* <div id="div_container_settings">
+                  <img id="btn_settings" src="/assets/images/button_settings.png" alt="Settings" onClick={() => setShowSettings(true)} />
+                </div> */}
 
                 {result != null && (
                   <div>
@@ -81,6 +92,12 @@ export default function App() {
           <div id="div_bottom_gap" />
         </div>
       </div>
+      <SettingsModal
+        show={showSettings}
+        onClose={() => setShowSettings(false)}
+        onSave={onSetCalcMethod}
+        initialMethod={calcMethod}
+      />
       <Footer />
     </div>
   )
