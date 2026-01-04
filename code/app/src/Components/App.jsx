@@ -13,9 +13,7 @@ import settings from '../../settings.json'
 const { rewardsInfo } = settings
 
 
-const calcMaxWeight = (weightKg, repsAmount) =>
-  repsAmount === 1 ? weightKg : weightKg * (1 + repsAmount / 30)
-
+import { stubCalcMaxWeight, convertKgToLbs, convertLbsToKg } from "../utilsCalc"
 
 
 
@@ -34,10 +32,10 @@ export default function App() {
     const units = unitArg !== undefined ? unitArg : unit
     setUnitShown(units)
     // Convert input to kilograms for internal calculations if needed
-    const inputKg = units === 'KG' ? w : (w * 0.45359237)
-    const maxWeightKg = calcMaxWeight(inputKg, r)
+    const inputKg = units === 'KG' ? w : convertLbsToKg(w)
+    const maxWeightKg = stubCalcMaxWeight(inputKg, r)
     // result displayed in chosen unit
-    const displayedResult = units === 'KG' ? Math.round(maxWeightKg) : Math.round(maxWeightKg / 0.45359237)
+    const displayedResult = units === 'KG' ? Math.round(maxWeightKg) : Math.round( convertKgToLbs(maxWeightKg) )
     setResult(displayedResult)
     let found
     for (let i = 0; i < rewardsInfo.length; ++i) {
