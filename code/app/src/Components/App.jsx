@@ -12,6 +12,8 @@ import settings from '../../settings.json'
 
 import { stubCalcMaxWeight, convertKgToLbs, convertLbsToKg } from "../utilsCalc"
 
+import {weightCalcMethods} from '../weightCalcMethods.js'
+
 
 const { rewardsInfo } = settings
 
@@ -24,7 +26,7 @@ export default function App() {
   const [unit, setUnit] = useState('KG')
   const [unitShown, setUnitShown] = useState('KG')
   const [showSettings, setShowSettings] = useState(false)
-  const [calcMethod, setCalcMethod] = useState('method 1')
+  const [calcMethod, setCalcMethod] = useState(Object.keys(weightCalcMethods)[0])
 
   const onSetCalcMethod = (i_method) => {
     setCalcMethod(i_method)
@@ -38,7 +40,7 @@ export default function App() {
     setUnitShown(units)
     // Convert input to kilograms for internal calculations if needed
     const inputKg = units === 'KG' ? w : convertLbsToKg(w)
-    const maxWeightKg = stubCalcMaxWeight(inputKg, r)
+    const maxWeightKg = stubCalcMaxWeight(inputKg, r, calcMethod)
     // result displayed in chosen unit
     const displayedResult = units === 'KG' ? Math.round(maxWeightKg) : Math.round( convertKgToLbs(maxWeightKg) )
     setResult(displayedResult)

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
+import weightCalcMethods from '../weightCalcMethods'
 
-export default function SettingsModal({ show, onClose, onSave, initialMethod = 'method 1' }) {
+export default function SettingsModal({ show, onClose, onSave, initialMethod = Object.keys(weightCalcMethods)[0] }) {
   const [method, setMethod] = useState(initialMethod)
 
   useEffect(() => {
@@ -34,9 +35,13 @@ export default function SettingsModal({ show, onClose, onSave, initialMethod = '
                 value={method}
                 onChange={(e) => setMethod(e.target.value)}
               >
-                <option value="method 1">method 1</option>
-                <option value="method 2">method 2</option>
+                {Object.keys(weightCalcMethods).map((methodName) => (
+                  <option key={methodName} value={methodName}>{methodName}</option>
+                ))}
               </select>
+              <small className="form-text text-muted mt-2 d-block" style={{ whiteSpace: 'pre-line' }}>
+                {weightCalcMethods[method]?.description}
+              </small>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>

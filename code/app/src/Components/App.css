@@ -40,3 +40,8 @@
 .modal-body label { display: block; margin-bottom: 6px; }
 .modal-body .form-control { width: 100%; padding: 6px 8px; }
 .modal-footer { display: flex; justify-content: flex-end; gap: 8px; padding: 12px; }
+/* Sharp edges for SettingsModal */
+.modal-content { border-radius: 0; }
+.modal-header { border-radius: 0; }
+.btn { border-radius: 0; }
+.form-control { border-radius: 0; }
