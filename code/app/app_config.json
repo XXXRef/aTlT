@@ -1,7 +1,7 @@
 {
     "versionInfo": {
-        "versionNumber": "1.1"
-        , "branch": "dev"
-        , "commit": "<commit_id_placeholder>"
+        "versionNumber": "1.2",
+        "branch": "dev",
+        "commit": "420362a"
     }
 }

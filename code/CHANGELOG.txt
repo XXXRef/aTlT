@@ -1,0 +1,5 @@
+
+## 1.2
+- feature: introduce version info handling
+- feature: Added various 1RM weight calculation methods
+- feature: Added settings functionality
