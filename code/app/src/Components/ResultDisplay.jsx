@@ -13,7 +13,8 @@ const ResultDisplay = ({ result, unitShown }) => {
       <div id="div_additional_info">
         {weightPercents.map(p => (
           <div key={p} className="div_additional_info_weightpercents_item">
-            <p>{p * 100}% : {Math.round(result * p)} {unitShown}</p>
+            <div className="weight_percent_column">{p * 100}% :</div>
+            <div className="weight_value_column">{Math.round(result * p)} {unitShown}</div>
           </div>
         ))}
       </div>

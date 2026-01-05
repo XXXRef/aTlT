@@ -45,3 +45,20 @@
 .modal-header { border-radius: 0; }
 .btn { border-radius: 0; }
 .form-control { border-radius: 0; }
+
+/* Results block */
+.div_additional_info_weightpercents_item {
+  display: flex;
+  gap: 1rem;
+}
+
+.weight_percent_column {
+  flex: 1;
+  font-weight: bold;
+  text-align: right;
+}
+
+.weight_value_column {
+  flex: 1;
+  text-align: left;
+}
