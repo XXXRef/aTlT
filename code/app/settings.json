@@ -1,0 +1,59 @@
+{
+  "weightPercents": [0.9, 0.8, 0.7, 0.6, 0.5],
+  "rewardsInfo": [
+    {
+      "weightBorder": 50,
+      "rank": "Feather",
+      "icon": "/assets/images/reward_icons/reward_feather.jpg",
+      "description": "You lift less than a grocery bag full of wet tissues. Honestly, are you made of air? Go touch a dumbbell—any dumbbell—even the pink one your cat uses as a toy. You got potential… somewhere."
+    },
+    {
+      "weightBorder": 65,
+      "rank": "Twig",
+      "icon": "/assets/images/reward_icons/reward_twig.png",
+      "description": "Congrats—you can probably bench your own ego! Too bad it weighs less than your lunch. Try lifting something heavier than your phone for once. Your Grandmas' Grandma is still stronger, you must do something with this beginning from yesterday"
+    },
+    {
+      "weightBorder": 80,
+      "rank": "Pussy",
+      "icon": "/assets/images/reward_icons/reward_novice.jpg",
+      "description": "All you can? You are that type of person who asks his grandma to open toilet lid cos its too heavy when he goes to take a dump, decreasing his microscopic weight even more. Go eat and train fcking moron, albeit you're shit now, I believe in you."
+    },
+    {
+      "weightBorder": 95,
+      "rank": "Meatling",
+      "icon": "/assets/images/reward_icons/reward_meatling.png",
+      "description": "You’re starting to look like a snack—literally! Not quite a snack for gains, but getting there. Keep pushing; one day you might intimidate a pigeon. Almost to be a human but still not enough"
+    },
+    {
+      "weightBorder": 110,
+      "rank": "Iron Ego",
+      "icon": "/assets/images/reward_icons/reward_iron_ego.png",
+      "description": "Okay, now you’re cooking with gas—and by gas, I mean the fumes from your pre-workout. You’re halfway to being scary. Don’t get cocky… but do get cockier after leg day."
+    },
+    {
+      "weightBorder": 120,
+      "rank": "Halfman",
+      "icon": "/assets/images/reward_icons/reward_middle.jpg",
+      "description": "Things are not so bad, still you can do way better. Go to gym and make me 20 squat reps with weight with which you usually do 10. Right now"
+    },
+    {
+      "weightBorder": 130,
+      "rank": "Schwarz",
+      "icon": "/assets/images/reward_icons/reward_senior.gif",
+      "description": "You are perfection, my dear! Just try to keep being so beatiful and strong as long as you can to make this world a little nicer. Kissing you in all allowed (and mb not only) places 😘💋"
+    }
+    ,{
+      "weightBorder": 140,
+      "rank": "Titanette",
+      "icon": "/assets/images/reward_icons/reward_titanette.png",
+      "description": "The gods whisper your name before attempting squats. Mountains crack when you flex. Keep flexing, keep grinding—you’re not just strong, you’re a menace with good hygiene."
+    },
+    {
+      "weightBorder": 160,
+      "rank": "Olympus",
+      "icon": "/assets/images/reward_icons/reward_olympus.jpg",
+      "description": "Gravity apologizes when you step on the scale. Normal humans avoid eye contact in the gym out of sheer awe. You’re not just peak human—you’re the reason dumbbells exist. Bow down… or better yet, spot me next set 😏"
+    }
+  ]
+}
