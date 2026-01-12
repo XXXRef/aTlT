@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react'
 import Footer from './Footer'
 import InputForm from './InputForm'
 import ResultDisplay from './ResultDisplay'
+import ResultLeaguesRank from './ResultLeaguesRank'
 import Reward from './Reward'
 import SettingsModal from './SettingsModal'
 
@@ -32,6 +33,7 @@ export default function App() {
   const [showSettings, setShowSettings] = useState(false)
   const [calcMethod, setCalcMethod] = useState(defaultCalcMethod)
   const [selfWeightValue, setSelfWeightValue] = useState('') // Normalized weight in kg
+  const [gender, setGender] = useState('')
 
   // Load user preferences on mount
   useEffect(() => {
@@ -49,14 +51,20 @@ export default function App() {
     // Set self weight from preferences or default (already normalized in kg)
     setSelfWeightValue(mergedSettings.selfWeightValue ?? defaults.selfWeightValue)
 
+    // Set gender from preferences or default
+    setGender(mergedSettings.gender ?? defaults.gender)
+
     console.log("Init selfWeightValue:", selfWeightValue)
+    console.log("mergedSettings.gender ?? defaults.gender:", mergedSettings.gender ?? defaults.gender)
     console.log("Init mergedSettings.selfWeightValue:", mergedSettings.selfWeightValue)
     console.log("Init defaults.selfWeightValue:", defaults.selfWeightValue)
   }, [])
 
-  const onSetCalcMethod = (i_method) => {
-    setCalcMethod(i_method)
-    console.log("onSetCalcMethod:", `+; calc method=${i_method}`)
+  const onSaveSettings = ({ weightCalcMethod, selfWeightValue, gender }) => {
+    setCalcMethod(weightCalcMethod)
+    setSelfWeightValue(selfWeightValue)
+    setGender(gender)
+    console.log("onSaveSettings:", `calc method=${weightCalcMethod}, selfWeight=${selfWeightValue}, gender=${gender}`)
   }
 
   const onCalculate = (weightArg, repsArg, unitArg) => {
@@ -77,6 +85,7 @@ export default function App() {
     if (found === undefined) found = rewardsInfo.length - 1
     setRankID(found)
   }
+
 
   return (
     <div id="div_mainarea">
@@ -110,6 +119,11 @@ export default function App() {
                       result={result}
                       unitShown={unitShown}
                     />
+                    <ResultLeaguesRank 
+                      weight={result}
+                      selfWeight={selfWeightValue}
+                      gender={gender}
+                    />
                     <Reward rankID={rankID} />
                   </div>
                 )}
@@ -128,11 +142,14 @@ export default function App() {
           const userPrefs = loadPreferences()
           const defaults = { ...getDefaultSettings(), calcMethod: defaultCalcMethod }
           const mergedSettings = mergeWithDefaults(userPrefs, defaults)
-          setSelfWeightValue(mergedSettings.selfWeightValue ?? defaults.selfWeightValue)
+          
+          // setSelfWeightValue(mergedSettings.selfWeightValue ?? defaults.selfWeightValue)
+          // setGender(mergedSettings.gender ?? defaults.gender)
         }}
-        onSave={onSetCalcMethod}
+        onSave={onSaveSettings}
         initialMethod={calcMethod}
         initialSelfWeightValueKg={selfWeightValue}
+        initialGender={gender}
       />
       <Footer />
     </div>

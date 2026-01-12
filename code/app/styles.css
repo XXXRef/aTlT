@@ -224,6 +224,19 @@ button{
     padding: 10px;
 }
 
+#resultleaguesrank_header{
+    margin-top: 20px;
+    background-color: #FF6B6B;
+    padding:20px;
+    text-align: center;
+    font-size: 20pt;
+}
+
+#resultleaguesrank_contents{
+    background-color: #FFB3B3;
+    padding: 10px;
+}
+
 .div_additional_info_weightpercents_item{
     /* border: solid 1px black; */
     /* padding-left: 50px; */

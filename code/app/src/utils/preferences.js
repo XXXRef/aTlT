@@ -14,7 +14,8 @@ export function getDefaultSettings() {
       calcMethod: null, // Will be set to first available method in App.jsx
       savePreferencesCheckbox: true,
       selfWeightValue: '', // Normalized weight in kg
-      selfWeightDisplayUnit: 'KG' // User's preferred display unit for self weight
+      selfWeightDisplayUnit: 'KG', // User's preferred display unit for self weight
+      gender: '' // Gender selection: 'M' or 'F'
     }
 }
 
