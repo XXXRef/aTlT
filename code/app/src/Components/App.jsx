@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import Footer from './Footer'
 import InputForm from './InputForm'
@@ -13,9 +13,13 @@ import settings from '../../settings.json'
 import { stubCalcMaxWeight, convertKgToLbs, convertLbsToKg } from "../utilsCalc"
 
 import {weightCalcMethods} from '../weightCalcMethods.js'
+import { loadPreferences, mergeWithDefaults, getDefaultSettings } from '../utils/preferences'
 
 
 const { rewardsInfo } = settings
+
+// Get default calculation method
+const defaultCalcMethod = Object.keys(weightCalcMethods)[0]
 
 
 export default function App() {
@@ -26,7 +30,21 @@ export default function App() {
   const [unit, setUnit] = useState('KG')
   const [unitShown, setUnitShown] = useState('KG')
   const [showSettings, setShowSettings] = useState(false)
-  const [calcMethod, setCalcMethod] = useState(Object.keys(weightCalcMethods)[0])
+  const [calcMethod, setCalcMethod] = useState(defaultCalcMethod)
+
+  // Load user preferences on mount
+  useEffect(() => {
+    const userPrefs = loadPreferences()
+    const defaults = { ...getDefaultSettings(), calcMethod: defaultCalcMethod }
+    const mergedSettings = mergeWithDefaults(userPrefs, defaults)
+    
+    // Set calculation method from preferences or default
+    if (mergedSettings.calcMethod && Object.keys(weightCalcMethods).includes(mergedSettings.calcMethod)) {
+      setCalcMethod(mergedSettings.calcMethod)
+    } else {
+      setCalcMethod(defaultCalcMethod)
+    }
+  }, [])
 
   const onSetCalcMethod = (i_method) => {
     setCalcMethod(i_method)
