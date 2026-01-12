@@ -10,10 +10,12 @@ const LSKEY_PREFERENCES = 'atlt_user_preferences'
  * @returns {Object} Default settings object
  */
 export function getDefaultSettings() {
-  return {
-    calcMethod: null, // Will be set to first available method in App.jsx
-    savePreferencesCheckbox:  true
-  }
+    return {
+      calcMethod: null, // Will be set to first available method in App.jsx
+      savePreferencesCheckbox: true,
+      selfWeightValue: '', // Normalized weight in kg
+      selfWeightDisplayUnit: 'KG' // User's preferred display unit for self weight
+    }
 }
 
 /**

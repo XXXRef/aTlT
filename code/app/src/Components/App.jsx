@@ -31,6 +31,7 @@ export default function App() {
   const [unitShown, setUnitShown] = useState('KG')
   const [showSettings, setShowSettings] = useState(false)
   const [calcMethod, setCalcMethod] = useState(defaultCalcMethod)
+  const [selfWeightValue, setSelfWeightValue] = useState('') // Normalized weight in kg
 
   // Load user preferences on mount
   useEffect(() => {
@@ -44,6 +45,13 @@ export default function App() {
     } else {
       setCalcMethod(defaultCalcMethod)
     }
+
+    // Set self weight from preferences or default (already normalized in kg)
+    setSelfWeightValue(mergedSettings.selfWeightValue ?? defaults.selfWeightValue)
+
+    console.log("Init selfWeightValue:", selfWeightValue)
+    console.log("Init mergedSettings.selfWeightValue:", mergedSettings.selfWeightValue)
+    console.log("Init defaults.selfWeightValue:", defaults.selfWeightValue)
   }, [])
 
   const onSetCalcMethod = (i_method) => {
@@ -114,9 +122,17 @@ export default function App() {
       </div>
       <SettingsModal
         show={showSettings}
-        onClose={() => setShowSettings(false)}
+        onClose={() => {
+          setShowSettings(false)
+          // Reload preferences after closing settings modal
+          const userPrefs = loadPreferences()
+          const defaults = { ...getDefaultSettings(), calcMethod: defaultCalcMethod }
+          const mergedSettings = mergeWithDefaults(userPrefs, defaults)
+          setSelfWeightValue(mergedSettings.selfWeightValue ?? defaults.selfWeightValue)
+        }}
         onSave={onSetCalcMethod}
         initialMethod={calcMethod}
+        initialSelfWeightValueKg={selfWeightValue}
       />
       <Footer />
     </div>
