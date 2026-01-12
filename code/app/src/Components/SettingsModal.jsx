@@ -1,17 +1,41 @@
 import React, { useState, useEffect } from 'react'
 import weightCalcMethods from '../weightCalcMethods'
+import { savePreferences, loadPreferences, getDefaultSettings } from '../utils/preferences'
 
 export default function SettingsModal({ show, onClose, onSave, initialMethod = Object.keys(weightCalcMethods)[0] }) {
   const [method, setMethod] = useState(initialMethod)
+  const [saveToPreferences, setSaveToPreferences] = useState(false)
 
   useEffect(() => {
     setMethod(initialMethod)
+    // Load checkbox state from preferences when modal opens
+    if (show) {
+      const userPrefs = loadPreferences()
+      const defaults = getDefaultSettings()
+      const checkboxState = userPrefs?.savePreferencesCheckbox ?? defaults.savePreferencesCheckbox
+      setSaveToPreferences(checkboxState)
+    }
   }, [initialMethod, show])
 
   if (!show) return null
 
   const handleSave = () => {
     if (onSave) onSave(method)
+    
+    // Handle preferences based on checkbox state
+    if (saveToPreferences) {
+      // Save settings to user preferences including checkbox state
+      savePreferences({ 
+        calcMethod: method,
+        savePreferencesCheckbox: true
+      })
+    } else {
+      // Save checkbox state as false, clear other preferences
+      savePreferences({ 
+        savePreferencesCheckbox: false
+      })
+    }
+    
     if (onClose) onClose()
   }
 
@@ -42,6 +66,18 @@ export default function SettingsModal({ show, onClose, onSave, initialMethod = O
               <small className="form-text text-muted mt-2 d-block" style={{ whiteSpace: 'pre-line' }}>
                 {weightCalcMethods[method]?.description}
               </small>
+              <div className="form-check mt-3">
+                <input
+                  className="form-check-input"
+                  type="checkbox"
+                  id="savePreferencesCheckbox"
+                  checked={saveToPreferences}
+                  onChange={(e) => setSaveToPreferences(e.target.checked)}
+                />
+                <label className="form-check-label" htmlFor="savePreferencesCheckbox">
+                  Save preferences
+                </label>
+              </div>
             </div>
             <div className="modal-footer">
               <button type="button" className="btn btn-primary" onClick={handleSave}>Save</button>
