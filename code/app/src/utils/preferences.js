@@ -3,7 +3,7 @@
  * Handles saving and loading user preferences from localStorage
  */
 
-const PREFERENCES_KEY = 'atlt_user_preferences'
+const LSKEY_PREFERENCES = 'atlt_user_preferences'
 
 /**
  * Get default settings values
@@ -12,7 +12,7 @@ const PREFERENCES_KEY = 'atlt_user_preferences'
 export function getDefaultSettings() {
   return {
     calcMethod: null, // Will be set to first available method in App.jsx
-    savePreferencesCheckbox:  false
+    savePreferencesCheckbox:  true
   }
 }
 
@@ -22,7 +22,7 @@ export function getDefaultSettings() {
  */
 export function loadPreferences() {
   try {
-    const stored = localStorage.getItem(PREFERENCES_KEY)
+    const stored = localStorage.getItem(LSKEY_PREFERENCES)
     if (stored) {
       return JSON.parse(stored)
     }
@@ -34,11 +34,11 @@ export function loadPreferences() {
 
 /**
  * Save user preferences to localStorage
- * @param {Object} preferences - Preferences object to save
+ * @param {Object} i_preferences - Preferences object to save
  */
-export function savePreferences(preferences) {
+export function savePreferences(i_preferences) {
   try {
-    localStorage.setItem(PREFERENCES_KEY, JSON.stringify(preferences))
+    localStorage.setItem(LSKEY_PREFERENCES, JSON.stringify(i_preferences))
   } catch (error) {
     console.error('Error saving preferences:', error)
   }
@@ -49,7 +49,7 @@ export function savePreferences(preferences) {
  */
 export function clearPreferences() {
   try {
-    localStorage.removeItem(PREFERENCES_KEY)
+    localStorage.removeItem(LSKEY_PREFERENCES)
   } catch (error) {
     console.error('Error clearing preferences:', error)
   }
